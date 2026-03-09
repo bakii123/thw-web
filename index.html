@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Companion - Your Emotional Support AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Background video -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='assets/background.mp4') }}" type="video/mp4">
+    </video>
+    <div class="container">
+        <!-- Auth Modal -->
+        <div id="authModal" class="modal active">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="header-top">
+                        <h1>🌙 <span id="appTitle">Soul Companion</span></h1>
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="ar">العربية</button>
+                            <button class="lang-btn" data-lang="fr">FR</button>
+                        </div>
+                    </div>
+                    <p id="tagline">Find peace through conversation</p>
+                </div>
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login" id="loginTabBtn">Login</button>
+                    <button class="tab-btn" data-tab="register" id="signupTabBtn">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="input-group">
+                        <input type="text" id="loginUsername" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="loginBtn">Enter Conversation</button>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <div class="input-group">
+                        <input type="text" id="registerUsername" placeholder="Choose username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="registerPassword" placeholder="Create password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="registerBtn">Create Account</button>
+                </form>
+                
+                <div class="modal-footer">
+                    <p>Get personalized advice with our AI psychiatrist</p>
+                    <p class="pricing">Premium: $9.99/month for unlimited</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chatContainer" class="chat-container hidden">
+            <div class="chat-header">
+                <div class="user-info">
+                    <div class="status-indicator"></div>
+                    <span id="usernameDisplay">Anonymous</span>
+                </div>
+                <div class="header-actions">
+                    <div class="language-selector chat-lang">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ar">العربية</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                    <button id="upgradeBtn" class="btn-upgrade hidden">Upgrade</button>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+            </div>
+            
+            <div id="messages" class="messages"></div>
+            
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Share what's on your mind..."
+                        rows="2"
+                        maxlength="500"
+                        disabled
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn" disabled>
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div id="inputStatus" class="input-status"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Legal Footer -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.8); color: #94a3b8; font-size: 0.75rem; padding: 8px 16px; text-align: center; z-index: 999; border-top: 1px solid rgba(255,255,255,0.1);">
+        Soul Companion is an AI conversational tool for support and reflection only, not a substitute for licensed mental health care. For emergencies, contact your local crisis line or emergency services.
+    </div>
+</body>
+</html>
